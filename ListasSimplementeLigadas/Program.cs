@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("F***k Lunes");
+            Console.WriteLine("F***k Miercoles");
+            Lista miLista = new Lista();
+            miLista.Agregar("A");
         }
     }
 }
