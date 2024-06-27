@@ -31,18 +31,39 @@ namespace ListasSimplementeLigadas
         {
             _nodoInicial.Enlace = null;
         }
-
+        //Este metodo me sirve para agregar elementos a mi coleccion
+        //voy a recivir el dato a agregar en el parametro "dato"
         public void Agregar(string dato)
         {
+            //declaramos un este objeto para posicionarnos 
             Nodo nodoActual = _nodoInicial;
+            
+            //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
             while (nodoActual.Enlace != null)
             {
                 nodoActual = nodoActual.Enlace;
             }
+
+            //declaramos un nuevo objeto y le asignamos el dato 
             Nodo nuevoNodo = new Nodo();
             nuevoNodo.Dato = dato;
 
+            //agregamos el nuevo nodo al final de la coleccion
             nodoActual.Enlace = nuevoNodo;
+        }
+
+        public string ObtenerDatos()
+        {
+            StringBuilder datos = new StringBuilder();
+            Nodo nodoActual = _nodoInicial;
+
+            //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
+            while (nodoActual.Enlace != null)
+            {
+                nodoActual = nodoActual.Enlace;
+                datos.AppendLine(nodoActual.Dato);
+            }
+            return datos.ToString();
         }
     }
 }
