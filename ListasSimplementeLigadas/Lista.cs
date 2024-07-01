@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace ListasSimplementeLigadas
 {
     internal class Lista
     {
         private Nodo _nodoInicial;
-        public Lista() 
+        public Lista()
         {
             _nodoInicial = new Nodo();
         }
@@ -37,7 +33,7 @@ namespace ListasSimplementeLigadas
         {
             //declaramos un este objeto para posicionarnos 
             Nodo nodoActual = _nodoInicial;
-            
+
             //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
             while (nodoActual.Enlace != null)
             {
@@ -64,6 +60,26 @@ namespace ListasSimplementeLigadas
                 datos.AppendLine(nodoActual.Dato);
             }
             return datos.ToString();
+        }
+
+        public Nodo? Buscar(string dato)
+        {
+            //el signo ! esta negando el valor 
+            //ejemplo: si EstaVacia es verdadero se cambia a falso 
+            if (!EstaVacia())
+            {
+                Nodo nodoActual = _nodoInicial;
+
+                while (nodoActual.Enlace != null)
+                {
+                    nodoActual = nodoActual.Enlace;
+                    if (nodoActual.Dato == dato)
+                    {
+                        return nodoActual;
+                    }
+                }
+            }
+            return null;
         }
     }
 }
