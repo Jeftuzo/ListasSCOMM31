@@ -8,6 +8,7 @@
             Lista miLista = new Lista();
             miLista.Agregar("A");
             miLista.Agregar("B");
+            miLista.Agregar("C");
 
             Console.WriteLine(miLista.ObtenerDatos());
 
@@ -17,6 +18,17 @@
             if (nodoB != null )
             {
                 Console.WriteLine(nodoB.Dato);
+            }
+            else
+            {
+                Console.WriteLine("No encontrado");
+            }
+            Console.WriteLine("Buscando el anterior a C");
+            Nodo? nodoC = new Nodo();
+            nodoC = miLista.BuscarAnterior("C");
+            if (nodoC != null )
+            {
+                Console.WriteLine(nodoC.Dato);
             }
             else
             {

@@ -81,5 +81,22 @@ namespace ListasSimplementeLigadas
             }
             return null;
         }
+        public Nodo? BuscarAnterior(string dato)
+        {
+            if (!EstaVacia())
+            {
+                Nodo nodoActual = _nodoInicial;
+
+                while (nodoActual.Enlace != null)
+                {
+                    nodoActual = nodoActual.Enlace;
+                    if (nodoActual.Enlace.Dato == dato)
+                    {
+                        return nodoActual;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
