@@ -23,9 +23,9 @@
             {
                 Console.WriteLine("No encontrado");
             }
-            Console.WriteLine("Buscando el anterior a C");
+            Console.WriteLine("Buscando el anterior");
             Nodo? nodoC = new Nodo();
-            nodoC = miLista.BuscarAnterior("C");
+            nodoC = miLista.BuscarAnterior("A");
             if (nodoC != null )
             {
                 Console.WriteLine(nodoC.Dato);

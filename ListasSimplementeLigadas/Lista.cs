@@ -89,11 +89,11 @@ namespace ListasSimplementeLigadas
 
                 while (nodoActual.Enlace != null)
                 {
-                    nodoActual = nodoActual.Enlace;
-                    if (nodoActual.Enlace.Dato == dato)
+                    if (nodoActual.Enlace.Dato == dato) 
                     {
                         return nodoActual;
                     }
+                    nodoActual = nodoActual.Enlace;
                 }
             }
             return null;
