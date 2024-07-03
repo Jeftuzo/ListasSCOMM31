@@ -5,9 +5,11 @@ namespace ListasSimplementeLigadas
     internal class Lista
     {
         private Nodo _nodoInicial;
+
         public Lista()
         {
             _nodoInicial = new Nodo();
+            Nodo nodoActual = new Nodo();
         }
 
         public bool EstaVacia()
@@ -89,7 +91,7 @@ namespace ListasSimplementeLigadas
 
                 while (nodoActual.Enlace != null)
                 {
-                    if (nodoActual.Enlace.Dato == dato) 
+                    if (nodoActual.Enlace.Dato == dato)
                     {
                         return nodoActual;
                     }
@@ -97,6 +99,29 @@ namespace ListasSimplementeLigadas
                 }
             }
             return null;
+        }
+
+        public void EliminarNodo(string dato)
+        {
+            if (EstaVacia() == false)
+            {
+                Nodo? nodoActual = Buscar(dato);
+
+                if (nodoActual != null)
+                {
+                    Nodo? nodoAnterior = BuscarAnterior(dato);
+
+                    //https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/operators/null-coalescing-operator
+                    if (nodoAnterior == null)
+                    {
+                        throw new Exception("No se encontro nodo anterior");
+                    }
+
+                    nodoAnterior.Enlace = nodoActual.Enlace;
+                    nodoActual.Enlace = null;
+
+                }
+            }
         }
     }
 }

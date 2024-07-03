@@ -4,18 +4,19 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("F***k Lunes");
+            Console.WriteLine("F***k Miercoles");
             Lista miLista = new Lista();
             miLista.Agregar("A");
             miLista.Agregar("B");
             miLista.Agregar("C");
+
 
             Console.WriteLine(miLista.ObtenerDatos());
 
             Console.WriteLine("Buscando B");
             Nodo? nodoB = new Nodo();
             nodoB = miLista.Buscar("B");
-            if (nodoB != null )
+            if (nodoB != null)
             {
                 Console.WriteLine(nodoB.Dato);
             }
@@ -23,17 +24,21 @@
             {
                 Console.WriteLine("No encontrado");
             }
-            Console.WriteLine("Buscando el anterior");
-            Nodo? nodoC = new Nodo();
-            nodoC = miLista.BuscarAnterior("A");
-            if (nodoC != null )
+
+            try
             {
-                Console.WriteLine(nodoC.Dato);
+                Console.WriteLine("");
+                Console.WriteLine("Eliminar B");
+                miLista.EliminarNodo("B");
+
+
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("No encontrado");
+                Console.WriteLine($"Ocurio un error {ex.Message}");
             }
+
+            Console.WriteLine(miLista.ObtenerDatos());
         }
     }
 }
