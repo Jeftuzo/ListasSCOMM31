@@ -9,7 +9,7 @@ namespace ListasDoblementeLigadas
         {
             _nodoInicial = new Nodo();
         }
-        
+
         //Metodo para validar si la lista esta vacia
         private bool EstaVacio()
         {
@@ -22,13 +22,13 @@ namespace ListasDoblementeLigadas
                 return false;
             }
         }
-        
+
         //Mertodo para vaciar la lista
         public void Vaciar()
         {
             _nodoInicial.Siguiente = null;
         }
-        
+
         //Metodo de para agregar nodos
         public void Agregar(string dato)
         {
@@ -44,7 +44,7 @@ namespace ListasDoblementeLigadas
 
             nodoActual.Siguiente = nodoNuevo;
         }
-        
+
         //metodo de busqueda de nodos
         public Nodo? Buscar(string dato)
         {
@@ -62,7 +62,7 @@ namespace ListasDoblementeLigadas
             }
             return null;
         }
-        
+
         //Metodo para eliminar nodos
         public void Eliminar(string dato)
         {
@@ -82,7 +82,7 @@ namespace ListasDoblementeLigadas
                 }
             }
         }
-        
+
         //Metodo para obtener los datos de la lista
         public string ObtenerDatos()
         {
@@ -101,17 +101,23 @@ namespace ListasDoblementeLigadas
         //Metodo para obtener los datos de la lista en sentido contrario
         public string ObtenerDatosReversa()
         {
-            StringBuilder datos = new StringBuilder();
             Nodo nodoActual = _nodoInicial;
-            
-            //TAREA 
-            //TODO: la tarea consiste en recorrer en sentido contrario y retornar los datos
-            // 
-            //while (nodoActual.Anterior != null)
-            //{
-            //    nodoActual = nodoActual.Anterior;
-            //    datos.AppendLine(nodoActual.Dato);
-            //}
+
+            //metodo para saltar entre nodos
+            while (nodoActual.Siguiente != null)
+            {
+                nodoActual = nodoActual.Siguiente;
+            }
+
+            //contructor de strings de manera mas eficiente
+            //https://learn.microsoft.com/es-es/dotnet/standard/base-types/stringbuilder
+            StringBuilder datos = new StringBuilder();
+
+            while (nodoActual.Anterior != null)
+            {
+                datos.AppendLine(nodoActual.Dato);
+                nodoActual = nodoActual.Anterior;
+            }
             return datos.ToString();
         }
     }
