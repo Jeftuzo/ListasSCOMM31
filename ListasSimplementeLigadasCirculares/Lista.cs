@@ -1,6 +1,10 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ListasSimplementeLigadas
+namespace ListasSimplementeLigadasCirculares
 {
     internal class Lista
     {
@@ -9,6 +13,7 @@ namespace ListasSimplementeLigadas
         /// <summary>
         /// Este es el constructor de la classe
         /// </summary>
+        /// https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/xmldoc/recommended-tags#summary
         public Lista()
         {
             _nodoInicial = new Nodo();
@@ -57,7 +62,7 @@ namespace ListasSimplementeLigadas
         {
             StringBuilder datos = new StringBuilder();
             Nodo nodoActual = _nodoInicial;
-
+            // TODO: Revisar Los Saltos del Nodo
             //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
             while (nodoActual.Enlace != null)
             {
