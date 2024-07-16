@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListasSimplementeLigadas", "ListasSimplementeLigadas\ListasSimplementeLigadas.csproj", "{EB7AE639-6D4B-49ED-8D74-7823765A010C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListasDoblementeLigadas", "ListasDoblementeLigadas\ListasDoblementeLigadas.csproj", "{E0634BD9-9FDB-4133-A828-96FCA857D886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListasDoblementeLigadas", "ListasDoblementeLigadas\ListasDoblementeLigadas.csproj", "{E0634BD9-9FDB-4133-A828-96FCA857D886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListasSimplementeLigadasCirculares", "ListasSimplementeLigadasCirculares\ListasSimplementeLigadasCirculares.csproj", "{88AA5C83-48AA-425A-8886-803EDCF57205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E0634BD9-9FDB-4133-A828-96FCA857D886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0634BD9-9FDB-4133-A828-96FCA857D886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0634BD9-9FDB-4133-A828-96FCA857D886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88AA5C83-48AA-425A-8886-803EDCF57205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88AA5C83-48AA-425A-8886-803EDCF57205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88AA5C83-48AA-425A-8886-803EDCF57205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88AA5C83-48AA-425A-8886-803EDCF57205}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
