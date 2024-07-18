@@ -15,6 +15,7 @@ namespace ListasSimplementeLigadas
             Nodo nodoActual = new Nodo();
         }
 
+        //Metodo para validar si la lista esta vacia.
         public bool EstaVacia()
         {
             //if (_nodoInicial.Enlace == null)
@@ -28,6 +29,7 @@ namespace ListasSimplementeLigadas
             return _nodoInicial.Enlace == null;
         }
 
+        //Metodo para Vaciar la lista.
         public void Vaciar()
         {
             _nodoInicial.Enlace = null;
@@ -53,6 +55,7 @@ namespace ListasSimplementeLigadas
             nodoActual.Enlace = nuevoNodo;
         }
 
+        //Metodo para mostrar los datos de la lista.
         public string ObtenerDatos()
         {
             StringBuilder datos = new StringBuilder();
@@ -67,6 +70,7 @@ namespace ListasSimplementeLigadas
             return datos.ToString();
         }
 
+        //Metodo para mostrar un dato especifico de la lista.
         public Nodo? Buscar(string dato)
         {
             //el signo ! esta negando el valor 
@@ -86,6 +90,8 @@ namespace ListasSimplementeLigadas
             }
             return null;
         }
+
+        //Metodo para mostrar el dato que esta antes del que buscamos.
         public Nodo? BuscarAnterior(string dato)
         {
             if (!EstaVacia())
@@ -104,6 +110,7 @@ namespace ListasSimplementeLigadas
             return null;
         }
 
+        //MEtodo para eliminar nodos de la lista.
         public void EliminarNodo(string dato)
         {
             if (EstaVacia() == false)
