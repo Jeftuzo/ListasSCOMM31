@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace ListasSimplementeLigadasCirculares
 {
@@ -22,20 +18,12 @@ namespace ListasSimplementeLigadasCirculares
 
         public bool EstaVacia()
         {
-            //if (_nodoInicial.Enlace == null)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-            return _nodoInicial.Enlace == null;
+            return _nodoInicial.Enlace == _nodoInicial;
         }
 
         public void Vaciar()
         {
-            _nodoInicial.Enlace = null;
+            _nodoInicial.Enlace = _nodoInicial;
         }
         //Este metodo me sirve para agregar elementos a mi coleccion
         //voy a recivir el dato a agregar en el parametro "dato"
@@ -45,28 +33,32 @@ namespace ListasSimplementeLigadasCirculares
             Nodo nodoActual = _nodoInicial;
 
             //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
-            while (nodoActual.Enlace != null)
+            while (nodoActual!.Enlace != _nodoInicial)
             {
-                nodoActual = nodoActual.Enlace;
+                nodoActual = nodoActual!.Enlace!;
             }
 
             //declaramos un nuevo objeto y le asignamos el dato 
-            Nodo nuevoNodo = new Nodo();
-            nuevoNodo.Dato = dato;
+            Nodo nuevoNodo = new Nodo
+            {
+                Dato = dato,
+                Enlace = _nodoInicial
+            };
 
             //agregamos el nuevo nodo al final de la coleccion
-            nodoActual.Enlace = nuevoNodo;
+            nodoActual.Enlace = nuevoNodo; 
         }
 
+        //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
         public string ObtenerDatos()
         {
             StringBuilder datos = new StringBuilder();
             Nodo nodoActual = _nodoInicial;
-            // TODO: Revisar Los Saltos del Nodo
+
             //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
-            while (nodoActual.Enlace != null)
+            while (nodoActual.Enlace != _nodoInicial)
             {
-                nodoActual = nodoActual.Enlace;
+                nodoActual = nodoActual!.Enlace!;
                 datos.AppendLine(nodoActual.Dato);
             }
             return datos.ToString();
@@ -80,9 +72,9 @@ namespace ListasSimplementeLigadasCirculares
             {
                 Nodo nodoActual = _nodoInicial;
 
-                while (nodoActual.Enlace != null)
+                while (nodoActual.Enlace != _nodoInicial)
                 {
-                    nodoActual = nodoActual.Enlace;
+                    nodoActual = nodoActual!.Enlace!;
                     if (nodoActual.Dato == dato)
                     {
                         return nodoActual;
@@ -97,9 +89,9 @@ namespace ListasSimplementeLigadasCirculares
             {
                 Nodo nodoActual = _nodoInicial;
 
-                while (nodoActual.Enlace != null)
+                while (nodoActual.Enlace != _nodoInicial)
                 {
-                    if (nodoActual.Enlace.Dato == dato)
+                    if (nodoActual!.Enlace!.Dato == dato)
                     {
                         return nodoActual;
                     }
@@ -117,13 +109,8 @@ namespace ListasSimplementeLigadasCirculares
 
                 if (nodoActual != null)
                 {
-                    Nodo? nodoAnterior = BuscarAnterior(dato);
-
-                    //https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/operators/null-coalescing-operator
-                    if (nodoAnterior == null)
-                    {
-                        throw new Exception("No se encontro nodo anterior");
-                    }
+                    Nodo? nodoAnterior = BuscarAnterior(dato)
+                        ?? throw new Exception("No se encontro nodo anterior");
 
                     nodoAnterior.Enlace = nodoActual.Enlace;
                     nodoActual.Enlace = null;
