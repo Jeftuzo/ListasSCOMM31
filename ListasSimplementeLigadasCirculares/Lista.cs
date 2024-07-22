@@ -13,7 +13,7 @@ namespace ListasSimplementeLigadasCirculares
         public Lista()
         {
             _nodoInicial = new Nodo();
-            Nodo nodoActual = new Nodo();
+            _nodoInicial.Enlace = _nodoInicial;
         }
 
         public bool EstaVacia()
