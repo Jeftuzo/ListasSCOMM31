@@ -1,16 +1,10 @@
 ﻿namespace ListasDoblementeLigadasCirculares
 {
-    internal class Nodo
+    internal class Nodo(Nodo? anterior = null, string dato = "", Nodo? siguiente = null)
     {
-        public Nodo? Anterior { get; set; } = null;
-        public string Dato { get; set; } = string.Empty;
-        public Nodo? Siguiente { get; set; } = null;
+        public Nodo? Anterior { get; set; } = anterior;
+        public string Dato { get; set; } = dato;
+        public Nodo? Siguiente { get; set; } = siguiente;
 
-        public Nodo(Nodo anterior = null!,string dato = "",Nodo siguiente = null!)
-        {
-            Anterior = anterior;
-            Dato = dato;
-            Siguiente = siguiente;
-        }
     }
 }

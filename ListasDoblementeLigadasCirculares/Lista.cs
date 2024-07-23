@@ -7,23 +7,12 @@ namespace ListasDoblementeLigadasCirculares
         Nodo _nodoInicial;
         public Lista()
         {
-            _nodoInicial = new Nodo();
-            _nodoInicial.Siguiente = _nodoInicial;
-            _nodoInicial.Anterior = _nodoInicial;
+            _nodoInicial = new Nodo(anterior: _nodoInicial, siguiente: _nodoInicial);
         }
 
         //Metodo para validar si la lista esta vacia
-        private bool EstaVacio()
-        {
-            if (_nodoInicial.Siguiente == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        private bool EstaVacio() => _nodoInicial.Siguiente == _nodoInicial;
+
 
         //Mertodo para vaciar la lista
         public void Vaciar()
@@ -35,16 +24,15 @@ namespace ListasDoblementeLigadasCirculares
         public void Agregar(string dato)
         {
             Nodo nodoActual = _nodoInicial;
-            while (nodoActual.Siguiente != null)
+            while (nodoActual.Siguiente != _nodoInicial)
             {
                 nodoActual = nodoActual.Siguiente;
             }
 
-            Nodo nodoNuevo = new Nodo();
-            nodoNuevo.Anterior = nodoActual;
-            nodoNuevo.Dato = dato;
+            Nodo nodoNuevo = new Nodo(anterior: nodoActual, dato: dato, siguiente: nodoActual.Siguiente);
 
             nodoActual.Siguiente = nodoNuevo;
+            _nodoInicial.Anterior = nodoNuevo;
         }
 
         //metodo de busqueda de nodos
