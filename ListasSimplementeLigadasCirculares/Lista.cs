@@ -12,15 +12,16 @@ namespace ListasSimplementeLigadasCirculares
         /// https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/xmldoc/recommended-tags#summary
         public Lista()
         {
-            _nodoInicial = new Nodo();
-            _nodoInicial.Enlace = _nodoInicial;
+            _nodoInicial = new Nodo(enlace: _nodoInicial);
         }
 
+        //Metodo para validar si la lista esta vacia
         public bool EstaVacia()
         {
             return _nodoInicial.Enlace == _nodoInicial;
         }
 
+        //Metodo para vaciar la lista
         public void Vaciar()
         {
             _nodoInicial.Enlace = _nodoInicial;
@@ -39,11 +40,8 @@ namespace ListasSimplementeLigadasCirculares
             }
 
             //declaramos un nuevo objeto y le asignamos el dato 
-            Nodo nuevoNodo = new Nodo
-            {
-                Dato = dato,
-                Enlace = _nodoInicial
-            };
+            Nodo nuevoNodo = new Nodo(dato: dato, enlace: _nodoInicial);
+
 
             //agregamos el nuevo nodo al final de la coleccion
             nodoActual.Enlace = nuevoNodo; 
@@ -64,6 +62,7 @@ namespace ListasSimplementeLigadasCirculares
             return datos.ToString();
         }
 
+        //Metodo para buscar un dato en la lista
         public Nodo? Buscar(string dato)
         {
             //el signo ! esta negando el valor 
@@ -83,6 +82,8 @@ namespace ListasSimplementeLigadasCirculares
             }
             return null;
         }
+
+        //Metodo para buscar el dato anterir al que buscamos
         public Nodo? BuscarAnterior(string dato)
         {
             if (!EstaVacia())
@@ -101,6 +102,7 @@ namespace ListasSimplementeLigadasCirculares
             return null;
         }
 
+        //Metodo para eliminar un dato de la lista
         public void EliminarNodo(string dato)
         {
             if (EstaVacia() == false)
