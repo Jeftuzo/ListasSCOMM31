@@ -44,7 +44,7 @@ namespace ListasSimplementeLigadasCirculares
 
 
             //agregamos el nuevo nodo al final de la coleccion
-            nodoActual.Enlace = nuevoNodo; 
+            nodoActual.Enlace = nuevoNodo;
         }
 
         //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 

@@ -7,7 +7,9 @@ namespace ListasDoblementeLigadasCirculares
         Nodo _nodoInicial;
         public Lista()
         {
-            _nodoInicial = new Nodo(anterior: _nodoInicial, siguiente: _nodoInicial);
+            _nodoInicial = new Nodo();
+            _nodoInicial.Anterior = _nodoInicial;
+            _nodoInicial.Siguiente = _nodoInicial;
         }
 
         //Metodo para validar si la lista esta vacia
@@ -17,7 +19,8 @@ namespace ListasDoblementeLigadasCirculares
         //Mertodo para vaciar la lista
         public void Vaciar()
         {
-            _nodoInicial.Siguiente = null;
+            _nodoInicial.Siguiente = _nodoInicial;
+            _nodoInicial.Anterior = _nodoInicial;
         }
 
         //Metodo de para agregar nodos
@@ -29,19 +32,19 @@ namespace ListasDoblementeLigadasCirculares
                 nodoActual = nodoActual.Siguiente;
             }
 
-            Nodo nodoNuevo = new Nodo(anterior: nodoActual, dato: dato, siguiente: nodoActual.Siguiente);
+            Nodo? nodoNuevo = new Nodo(anterior: nodoActual, dato: dato, siguiente: nodoActual.Siguiente);
 
             nodoActual.Siguiente = nodoNuevo;
             _nodoInicial.Anterior = nodoNuevo;
         }
 
         //metodo de busqueda de nodos
-        public Nodo? Buscar(string dato)
+        public Nodo Buscar(string dato)
         {
             if (EstaVacio() == false)
             {
                 Nodo nodoActual = _nodoInicial;
-                while (nodoActual.Siguiente != null)
+                while (nodoActual.Siguiente != _nodoInicial)
                 {
                     nodoActual = nodoActual.Siguiente;
                     if (nodoActual.Dato == dato)
@@ -58,7 +61,7 @@ namespace ListasDoblementeLigadasCirculares
         {
             if (EstaVacio() == false)
             {
-                Nodo? nodoActual = Buscar(dato);
+                Nodo nodoActual = Buscar(dato);
                 //metodo para navegar en las propiedades de los nodos
                 if (nodoActual != null)
                 {
@@ -79,8 +82,8 @@ namespace ListasDoblementeLigadasCirculares
             StringBuilder datos = new StringBuilder();
             Nodo nodoActual = _nodoInicial;
 
-            //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado 
-            while (nodoActual.Siguiente != null)
+            //nos vamos a posicionar siempre y cuando el nodo actual tenga un nodo enlazado diferente a _nodoInicial
+            while (nodoActual.Siguiente != _nodoInicial)
             {
                 nodoActual = nodoActual.Siguiente;
                 datos.AppendLine(nodoActual.Dato);
@@ -94,16 +97,16 @@ namespace ListasDoblementeLigadasCirculares
             Nodo nodoActual = _nodoInicial;
 
             //metodo para saltar entre nodos
-            while (nodoActual.Siguiente != null)
+            while (nodoActual.Siguiente != _nodoInicial)
             {
-                nodoActual = nodoActual.Siguiente;
+                nodoActual = nodoActual.Anterior;
             }
 
             //contructor de strings de manera mas eficiente
             //https://learn.microsoft.com/es-es/dotnet/standard/base-types/stringbuilder
             StringBuilder datos = new StringBuilder();
 
-            while (nodoActual.Anterior != null)
+            while (nodoActual.Anterior.Siguiente != _nodoInicial)
             {
                 datos.AppendLine(nodoActual.Dato);
                 nodoActual = nodoActual.Anterior;
